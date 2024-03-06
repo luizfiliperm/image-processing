@@ -1,6 +1,7 @@
 package app;
 
 import entities.Image;
+import services.ImageService;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -20,6 +21,12 @@ public class Main {
 
 
         String savePath = path.substring(0, path.lastIndexOf(".")) + "_copy.jpg";
+
+        ImageService.setFirstPixelBlue(image);
+        ImageService.setCentralPixelGreen(image);
+        ImageService.setLastPixelRed(image);
+
+
         image.saveImage(savePath);
 
         sc.close();
