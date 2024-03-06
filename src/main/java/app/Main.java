@@ -26,6 +26,7 @@ public class Main {
         ImageService.setCentralPixelGreen(image);
         ImageService.setLastPixelRed(image);
 
+        ImageService.showRGBofEveryPixel(image);
 
         image.saveImage(savePath);
 
