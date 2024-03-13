@@ -22,9 +22,7 @@ public class Main {
 
         String savePath = path.substring(0, path.lastIndexOf(".")) + "_copy.jpg";
 
-        ImageService.setFirstPixelBlue(image);
-        ImageService.setCentralPixelGreen(image);
-        ImageService.setLastPixelRed(image);
+        ImageService.invertColors(image);
 
         ImageService.showRGBofEveryPixel(image);
 

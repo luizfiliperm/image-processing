@@ -27,4 +27,25 @@ public class ImageService {
             }
         }
     }
+
+    public static void blackAndWhiteFilter(Image image){
+        for(int i = 0; i < image.getWidth(); i++){
+            for(int j = 0; j < image.getHeight(); j++){
+                Color color = new Color(image.getBufferedImage().getRGB(i,j));
+                int average = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
+                Color newColor = new Color(average, average, average);
+                image.getBufferedImage().setRGB(i,j, newColor.getRGB());
+            }
+        }
+    }
+
+    public static void invertColors(Image image){
+        for(int i = 0; i < image.getWidth(); i++){
+            for(int j = 0; j < image.getHeight(); j++){
+                Color color = new Color(image.getBufferedImage().getRGB(i,j));
+                Color newColor = new Color(255 - color.getRed(), 255 - color.getGreen(), 255 - color.getBlue());
+                image.getBufferedImage().setRGB(i,j, newColor.getRGB());
+            }
+        }
+    }
 }
