@@ -158,4 +158,24 @@ public class ColorFilter {
             }
         }
     }
+
+    public static void increaseMultiplyBright(Image image, Double value){
+        for(int i = 0; i < image.getWidth(); i++){
+            for(int j = 0; j < image.getHeight(); j++){
+                Color color = new Color(image.getBufferedImage().getRGB(i,j));
+                Color newColor = new Color(getColorValue(color.getRed(), value), getColorValue(color.getGreen(), value), getColorValue(color.getBlue(), value));
+                image.getBufferedImage().setRGB(i,j, newColor.getRGB());
+            }
+        }
+    }
+
+    private static int getColorValue(int color, Double value){
+        int newColor = (int) (color * value);
+        if(newColor > 255){
+            return 255;
+        }else if(newColor < 0){
+            return 0;
+        }
+        return newColor;
+    }
 }

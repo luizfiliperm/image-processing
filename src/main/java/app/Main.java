@@ -29,7 +29,10 @@ public class Main {
         Image increaseBright = new Image(path);
         ColorFilter.increaseBright(increaseBright, 40);
 
-        ImageUtil.showImages(image, increaseTonality, binaryImage, increaseBright);
+        Image increaseMultiplyBright = new Image(path);
+        ColorFilter.increaseMultiplyBright(increaseMultiplyBright, 1.5);
+
+        ImageUtil.showImages(image, increaseTonality, binaryImage, increaseBright, increaseMultiplyBright);
 
         sc.close();
     }
