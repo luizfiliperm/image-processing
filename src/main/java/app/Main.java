@@ -1,7 +1,8 @@
 package app;
 
 import entities.Image;
-import services.ImageService;
+import services.ColorFilter;
+import util.ImageUtil;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,14 +20,16 @@ public class Main {
         System.out.println("Width: " + image.getWidth());
         System.out.println("Pixels: " + image.getPixels());
 
+        Image increaseTonality = new Image(path);
+        ColorFilter.increaseTonality(image, -40);
 
-        String savePath = path.substring(0, path.lastIndexOf(".")) + "_copy.jpg";
+        Image binaryImage = new Image(path);
+        ColorFilter.binaryImage(binaryImage);
 
-        ImageService.invertColors(image);
+        Image increaseBright = new Image(path);
+        ColorFilter.increaseBright(increaseBright, 40);
 
-        ImageService.showRGBofEveryPixel(image);
-
-        image.saveImage(savePath);
+        ImageUtil.showImages(image, increaseTonality, binaryImage, increaseBright);
 
         sc.close();
     }
